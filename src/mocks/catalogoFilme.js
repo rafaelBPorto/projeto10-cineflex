@@ -1,4 +1,4 @@
-const listaFilmes = [
+const CatalogoFilmes = [
 	{
         id: 1,
         title: "2067",
