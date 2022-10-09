@@ -26,10 +26,11 @@ export default function Filme() {
 
     return (
         <>
-            <ContainerSessoes>
-                <h1>Selecione o horário</h1>
-                {sessoes !== null ? (
-                    <>
+
+            {sessoes !== null ? (
+                <>
+                    <ContainerSessoes>
+                        <h1>Selecione o horário</h1>
                         {sessoes.map((s) => {
                             return (
                                 <ContainerSessao key={s.id}>
@@ -44,18 +45,19 @@ export default function Filme() {
                                 </ContainerSessao>
                             )
                         })}
-                    </>
-                ) : (
-                    <div>{erro}</div>
-                )}
+                    </ContainerSessoes>
+                    <ContainerFooter>
+                        <ContainerMolduraFilme>
+                            <img src={filme.posterURL} alt={filme.title} />
+                        </ContainerMolduraFilme>
+                        <h1>{filme.title}</h1>
+                    </ContainerFooter>
 
-            </ContainerSessoes>
-            <ContainerFooter>
-                <ContainerMolduraFilme>
-                    <img src={filme.posterURL} alt={filme.title} />
-                </ContainerMolduraFilme>
-                <h1>{filme.title}</h1>
-            </ContainerFooter>
+                </>
+            ) : (
+                <div>{erro}</div>
+            )}
+            
         </>
     )
 
