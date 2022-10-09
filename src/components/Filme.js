@@ -5,24 +5,30 @@ import styled from "styled-components"
 
 
 export default function Filme() {
-    const { idFilme } = useParams()
+
     const [filme, setFilme] = useState({})
     const [sessoes, setSessoes] = useState(null)
+    const [erro, setErro] = useState("Carregando...")
+    const { idFilme } = useParams()
     const URLfilme = `https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`
 
     useEffect(() => {
         const filmePromise = axios.get(URLfilme)
+
         filmePromise.then(r => {
             setFilme(r.data)
             setSessoes(r.data.days)
         })
-    }, [])
+
+        filmePromise.catch(err => { setErro(err.message) })
+
+    }, [URLfilme])
 
     return (
         <>
             <ContainerSessoes>
                 <h1>Selecione o horário</h1>
-                {sessoes !== null && (
+                {sessoes !== null ? (
                     <>
                         {sessoes.map((s) => {
                             return (
@@ -39,14 +45,16 @@ export default function Filme() {
                             )
                         })}
                     </>
+                ) : (
+                    <div>{erro}</div>
                 )}
 
             </ContainerSessoes>
             <ContainerFooter>
-               <ContainerMolduraFilme>
-                    <img src={filme.posterURL } />
-                </ContainerMolduraFilme>   
-                    <h1>{filme.title}</h1>        
+                <ContainerMolduraFilme>
+                    <img src={filme.posterURL} alt={filme.title} />
+                </ContainerMolduraFilme>
+                <h1>{filme.title}</h1>
             </ContainerFooter>
         </>
     )
