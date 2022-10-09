@@ -25,7 +25,6 @@ const ContainerHeader = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 4.5vh;

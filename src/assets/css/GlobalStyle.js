@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+        font-family: 'Roboto', sans-serif;
+        box-sizing: border-box;
+
+
     }
 
     article, aside, details, figcaption, figure, 

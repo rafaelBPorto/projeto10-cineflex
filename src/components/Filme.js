@@ -16,56 +16,144 @@ export default function Filme() {
             setFilme(r.data)
             setSessoes(r.data.days)
         })
-    },[])
+    }, [])
 
     return (
-        <ContainerSessoes>
-            <ContainerTitulo>Selecione o horário</ContainerTitulo>
-            {sessoes !== null && (
-                <>
-                    {sessoes.map((s) => {
-                        return (
-                            <div key={s.id}>
-                                <ContainerSessao >  
-                                    Sessão: {s.weekday} - Data: {s.date}
+        <>
+            <ContainerSessoes>
+                <h1>Selecione o horário</h1>
+                {sessoes !== null && (
+                    <>
+                        {sessoes.map((s) => {
+                            return (
+                                <ContainerSessao key={s.id}>
+                                    <p>
+                                        {s.weekday} - {s.date}
+                                    </p>
+                                    <ContainerHorarios>
+                                        {s.showtimes.map((st) => {
+                                            return <div key={st.id}> <button>{st.name}</button> </div>
+                                        })}
+                                    </ContainerHorarios>
                                 </ContainerSessao>
-                                {s.showtimes.map((st) => {
-                                    return <span key={st.id}>{st.name} </span>
-                                })}
-                            </div>
-                        )
-                    })}
-                </>
-            )}
-        </ContainerSessoes>
+                            )
+                        })}
+                    </>
+                )}
+
+            </ContainerSessoes>
+            <ContainerFooter>
+               <ContainerMolduraFilme>
+                    <img src={filme.posterURL } />
+                </ContainerMolduraFilme>   
+                    <h1>{filme.title}</h1>        
+            </ContainerFooter>
+        </>
     )
 
 }
 
 const ContainerSessoes = styled.div`
     margin: 0 auto;
-    max-width: 375px;    
-`
-
-const ContainerTitulo = styled.div`
+    max-width: 375px; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    h1{
         width: 100%;
         height: 110px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-weight: 400;
-        font-size: 24px;
+        font-size: 24px;    
+    }   
 `
-const ContainerSessao = styled.div`
-        height: 35px;
 
-        font-family: 'Roboto';
-        font-style: normal;
+const ContainerSessao = styled.div`
+    display: flex;
+    flex-direction: column;
+    color: #293845;
+
+    p{
         font-weight: 400;
         font-size: 20px;
-        line-height: 23px;
-        display: flex;
-        align-items: center;
-        letter-spacing: 0.02em;
-        color: #293845;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
 `
+
+const ContainerHorarios = styled.div`
+    display: flex;
+    gap: 8px;
+
+    button{
+        width: 83px;
+        height: 43px;
+
+        background: #E8833A;
+        border-radius: 3px;
+        border: none;
+
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        justify-content: center;
+        align-items:center; 
+
+        color: #FFFFFF;
+    }
+
+`
+
+const ContainerFooter = styled.div`
+    position: fixed; 
+    bottom: 0px;   
+    left: 0px;
+    width: 100%;
+    height: 117px;
+    padding: 14px;
+    
+
+    background: #DFE6ED;
+    display:flex;
+    align-items: center;
+
+
+
+    h1{
+        font-weight: 400;
+        margin-left: 16px;
+
+    }
+
+`
+
+const ContainerMolduraFilme = styled.div`
+    width: 64px;
+    height: 89px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        width: 48px;
+        height: 72px;
+    }
+
+    h1{
+        font-weight: 400;
+    }
+`
+
+
+
+
+
