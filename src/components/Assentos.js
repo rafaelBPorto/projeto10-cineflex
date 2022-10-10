@@ -33,6 +33,7 @@ export default function Assentos() {
                             return <Lugar key={assento.id} assento={assento} lugaresSelecionados={lugaresSelecionados.id}/>
                         })}
                     </ContainerAssentos>
+
                     <ContainerFooter>
                         <ContainerMolduraFilme>
                             <img src={sessao.movie.posterURL} alt={sessao.movie.title} />
@@ -42,8 +43,6 @@ export default function Assentos() {
                             <h1>{sessao.day.weekday} - {sessao.day.date}</h1>
                             </span>
                         </h1>
-                        
-                        
                     </ContainerFooter>
                 </>
             )}

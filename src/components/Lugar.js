@@ -12,18 +12,18 @@ export default function Lugar({ assento, lugaresSelecionados }) {
         const novoEstado = !selecionado
         setSelecionado(novoEstado)
         if (novoEstado) {
-            lugaresSelecionados.push(assento.id)
+            lugaresSelecionados.push(assento.name)
             
             setInterna("#1AAE9E")
             setMoldura("#0E7D71")
         } else {
-            const posicao = lugaresSelecionados.indexOf(assento.id)
+            const posicao = lugaresSelecionados.indexOf(assento.name)
             lugaresSelecionados.splice(posicao, 1)
             setInterna("#C3CFD9")
             setMoldura("#7B8B99")      
         }
 
-        // console.log(lugaresSelecionados)
+        console.log(lugaresSelecionados)
 
     }
 
