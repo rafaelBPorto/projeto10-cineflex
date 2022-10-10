@@ -7,10 +7,31 @@ import Lugar from "./Lugar"
 
 export default function Assentos() {
     const [sessao, setSessao] = useState(null)
-    const lugaresSelecionados = {id: [], name:"", cpf:""}
+    const [plavraChutada, setPalavraChutada] = useState("")
+    const [palavrasTestadas, setPalavrasTestadas] = useState([]);
+    const [id, setId] = useState([])
+    const [name, setName] = useState("")
+    const [cpf, setCpf] = useState("")
+
+    const lugaresSelecionados = { id: [], name: "", cpf: "" }
 
     const { idSessao } = useParams()
     const URLsessao = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
+
+    function monitoraInput(event){
+        setPalavraChutada(event.target.value)
+    }
+
+    function chutarPalavras() {
+        const novaLista = [...palavrasTestadas, plavraChutada]
+        setPalavrasTestadas(novaLista)
+        setPalavraChutada("")
+        console.log(novaLista)
+        lugaresSelecionados.name = plavraChutada
+        lugaresSelecionados.id=[id]
+        
+        console.log(lugaresSelecionados)
+    }
 
     useEffect(() => {
         const sessaoPromise = axios.get(URLsessao)
@@ -30,17 +51,25 @@ export default function Assentos() {
                     <ContainerAssentos>
                         <ContainerTitulo>Selecione o(s) assento(s)</ContainerTitulo>
                         {sessao.seats.map((assento) => {
-                            return <Lugar key={assento.id} assento={assento} lugaresSelecionados={lugaresSelecionados.id}/>
+                            return <Lugar key={assento.id} assento={assento} id={id} setId={setId}/>
                         })}
                     </ContainerAssentos>
+
+                    <div>Nome do Comprador</div>
+                    <input type="text"
+                        placeholder="Digite seu nome"
+                        onChange={monitoraInput}
+                        value={plavraChutada}
+                    />
+                    <button onClick={chutarPalavras}>Chutar</button>
 
                     <ContainerFooter>
                         <ContainerMolduraFilme>
                             <img src={sessao.movie.posterURL} alt={sessao.movie.title} />
                         </ContainerMolduraFilme>
-                        <h1>{sessao.movie.title} 
+                        <h1>{sessao.movie.title}
                             <span>
-                            <h1>{sessao.day.weekday} - {sessao.day.date}</h1>
+                                <h1>{sessao.day.weekday} - {sessao.day.date}</h1>
                             </span>
                         </h1>
                     </ContainerFooter>
