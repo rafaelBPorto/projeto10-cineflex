@@ -1,12 +1,12 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import DadosCompra from "./DadosCompra"
 import Lugar from "./Lugar"
 
 
-export default function Assentos({ sessao, setSessao, id, setId, name, setName, cpf, setCpf}) {
+export default function Assentos({ sessao, setSessao, id, setId, name, setName, cpf, setCpf, numeroAssentos, setNumeroAssentos}) {
     // const [sessao, setSessao] = useState(null)
     // const [id, setId] = useState([])
     // const [name, setName] = useState("")
@@ -23,7 +23,7 @@ export default function Assentos({ sessao, setSessao, id, setId, name, setName, 
 
         })
 
-    }, [URLsessao])
+    }, [URLsessao, setSessao])
 
     return (
         <div>
@@ -34,7 +34,7 @@ export default function Assentos({ sessao, setSessao, id, setId, name, setName, 
                     <ContainerAssentos>
                         <ContainerTitulo>Selecione o(s) assento(s)</ContainerTitulo>
                         {sessao.seats.map((assento) => {
-                            return <Lugar key={assento.id} assento={assento} id={id} setId={setId} />
+                            return <Lugar key={assento.id} assento={assento} id={id} setId={setId} numeroAssentos={numeroAssentos} setNumeroAssentos={setNumeroAssentos} />
                         })}
                     </ContainerAssentos>
 

@@ -15,6 +15,7 @@ export default function App(){
     const [id, setId] = useState([])
     const [name, setName] = useState("")
     const [cpf, setCpf] = useState("")
+    const [numeroAssentos, setNumeroAssentos]=useState([])
     return(
      
        <BrowserRouter>
@@ -31,7 +32,9 @@ export default function App(){
                         name={name}
                         setName={setName}
                         cpf={cpf}
-                        setCpf={setCpf} 
+                        setCpf={setCpf}
+                        numeroAssentos={numeroAssentos}
+                        setNumeroAssentos={setNumeroAssentos}
                         />} />
                 <Route path="/sucesso" element={<Sucesso 
                     sessao={sessao} 
@@ -41,7 +44,8 @@ export default function App(){
                     name={name}
                     setName={setName}
                     cpf={cpf}
-                    setCpf={setCpf} />} />
+                    setCpf={setCpf}
+                    numeroAssentos={numeroAssentos} />} />
                 {/* <Route path="/sessoes/:idFilme" element={} /> */}
             </Routes>
        </BrowserRouter>

@@ -1,7 +1,7 @@
-export default function Sucesso({obj}){
+export default function Sucesso({ sessao, setSessao, id, setId, name, setName, cpf, setCpf, numeroAssentos}){
     return(
         <div>
-            {obj.cpf}
+            {name} - {cpf} - {numeroAssentos}
         </div>
     )
 }

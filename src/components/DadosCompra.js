@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import Sucesso from "./Sucesso"
 
 export default function DadosCompra({ name, setName, cpf, setCpf, id }) {
     console.log(name)
