@@ -6,31 +6,28 @@ export default function DadosCompra({ name, setName, cpf, setCpf, id }) {
     console.log(name)
     console.log(cpf)
     const navigate = useNavigate()
-   
+
 
 
     const urlCompra = "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many"
 
-    const obj = {ids: id, name, cpf}
+    const obj = { ids: id, name, cpf }
 
 
     function realizarCompra(e) {
         e.preventDefault()
-        
+
         const enviarPedido = axios.post(urlCompra, obj)
 
         enviarPedido.then(() => {
             console.log(obj)
-            // mudar de página
             navigate("/sucesso")
-            
-            // alert("Compra Realizada")
         })
     }
 
 
     return (
-        <ContainerForm action='/sucesso' onSubmit={realizarCompra}>
+        <ContainerForm  onSubmit={realizarCompra}>
             <div>
                 <div>
                     <label htmlFor="name">Nome do Comprador:</label>

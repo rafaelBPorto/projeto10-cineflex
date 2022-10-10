@@ -1,25 +1,39 @@
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Sucesso({ sessao, setSessao, id, setId, name, setName, cpf, setCpf, numeroAssentos }) {
+export default function Sucesso({ sessao, setSessao, id, setId, name, setName, cpf, setCpf, numeroAssentos, setNumeroAssentos }) {
+    const navigate = useNavigate()
+    const numeroLugar = [...numeroAssentos]
 
+    function voltarEmcartaz() {
+        setSessao(null)
+        setId([])
+        setName("")
+        setCpf("")
+        // setNumeroAssentos([])
+        navigate("/")
+    }
     return (
 
         <ContainerSucesso>
-            <h1>Pedido feito<br/>com sucesso!</h1>
+            <h1>Pedido feito<br />com sucesso!</h1>
             <h2>Filme e sessão</h2>
             <p>{sessao.movie.title}</p>
             <p>{sessao.day.date} {sessao.name}</p>
 
             <h2>Comprador</h2>
             <p>Nome: {name}</p>
+            <p>Cpf: {cpf}</p>
             <h2>Ingressos</h2>
-            {numeroAssentos.map((n, index) => {
+
+            {numeroLugar.map((n, index) => {
                 return (
                     <p key={index}>
                         Assento: {n}
                     </p>
                 )
             })}
+            <BotaoRetonar onClick={voltarEmcartaz}>Voltar pra Home</BotaoRetonar>
         </ContainerSucesso>
     )
 }
@@ -60,4 +74,22 @@ const ContainerSucesso = styled.div`
     p{
         margin: 5px;
     }
+`
+
+const BotaoRetonar = styled.button`
+    width: 225px;
+    height: 42px;
+    margin: 30px auto;
+    
+
+    background: #E8833A;
+    border-radius: 3px;
+    border: none;
+
+    font-weight: 400;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
 `
