@@ -6,7 +6,7 @@ import Emcartaz from "./EmCartaz";
 import Filme from "./Filme";
 import Header from "./Header";
 import Sucesso from "./Sucesso";
-// import Sessoes from "./Sessoes";
+
 
 
 export default function App(){
@@ -46,8 +46,9 @@ export default function App(){
                     setName={setName}
                     cpf={cpf}
                     setCpf={setCpf}
-                    numeroAssentos={numeroAssentos} />} 
-                    setNumeroAssentos={setNumeroAssentos}/>
+                    numeroAssentos={numeroAssentos}
+                    setNumeroAssentos={setNumeroAssentos} />} 
+                    />
             </Routes>
        </BrowserRouter>
     )

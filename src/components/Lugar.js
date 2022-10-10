@@ -5,7 +5,6 @@ export default function Lugar({ assento, id, setId, numeroAssentos, setNumeroAss
 
     const lugaresSelecionados = id
     const numeroLugar = numeroAssentos
-    console.log(lugaresSelecionados)
     const [selecionado, setSelecionado] = useState(false)
     const [Interna, setInterna] = useState("#C3CFD9")
     const [Moldura, setMoldura] = useState("#7B8B99")
@@ -18,7 +17,6 @@ export default function Lugar({ assento, id, setId, numeroAssentos, setNumeroAss
             numeroLugar.push(assento.name)
             setId(lugaresSelecionados)
             setNumeroAssentos(numeroLugar)
-            // setNumeroAssentos(assento.name)
             setInterna("#1AAE9E")
             setMoldura("#0E7D71")
         } else {
@@ -31,9 +29,6 @@ export default function Lugar({ assento, id, setId, numeroAssentos, setNumeroAss
             setInterna("#C3CFD9")
             setMoldura("#7B8B99")      
         }
-
-        console.log(lugaresSelecionados)
-
     }
 
     return (

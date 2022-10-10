@@ -6,11 +6,11 @@ export default function Sucesso({ sessao, setSessao, id, setId, name, setName, c
     const numeroLugar = [...numeroAssentos]
 
     function voltarEmcartaz() {
+        setNumeroAssentos([])
         setSessao(null)
         setId([])
         setName("")
         setCpf("")
-        // setNumeroAssentos([])
         navigate("/")
     }
     return (
