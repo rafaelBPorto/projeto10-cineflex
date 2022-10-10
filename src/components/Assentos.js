@@ -7,10 +7,6 @@ import Lugar from "./Lugar"
 
 
 export default function Assentos({ sessao, setSessao, id, setId, name, setName, cpf, setCpf, numeroAssentos, setNumeroAssentos}) {
-    // const [sessao, setSessao] = useState(null)
-    // const [id, setId] = useState([])
-    // const [name, setName] = useState("")
-    // const [cpf, setCpf] = useState("")
 
     const { idSessao } = useParams()
     const URLsessao = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
