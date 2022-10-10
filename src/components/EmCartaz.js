@@ -20,7 +20,7 @@ export default function EmCartaz() {
     return (
 
         <ContainerFilmes>
-            <ContainerTitulo> Selecione o Fimlme</ContainerTitulo>
+            <ContainerTitulo> Selecione o Filme</ContainerTitulo>
             {filmes.map((filme, index) =>
                 <Link to={`/filme/${filme.id}`} key={index}>
                     <ContainerMoldura>

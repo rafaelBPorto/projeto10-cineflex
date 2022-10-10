@@ -46,6 +46,10 @@ export default function DadosCompra({ name, setName, cpf, setCpf, id }) {
                     value={cpf}
                     onChange={e => setCpf(e.target.value)}
                     type="text"
+                    minLength={11}
+                    maxLength={11}
+                    placeholder="CPF - somentes números"
+                    
                     required
                 />
             </div>
