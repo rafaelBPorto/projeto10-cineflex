@@ -1,7 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
+import carregando from "../assets/img/carregando.gif"
 
 
 export default function Filme() {
@@ -39,7 +40,7 @@ export default function Filme() {
                                     </p>
                                     <ContainerHorarios>
                                         {s.showtimes.map((st) => {
-                                            return <div key={st.id}> <button>{st.name}</button> </div>
+                                            return <Link key={st.id} to={`/assentos/${st.id}`}> <button>{st.name}</button> </Link>
                                         })}
                                     </ContainerHorarios>
                                 </ContainerSessao>
@@ -55,9 +56,12 @@ export default function Filme() {
 
                 </>
             ) : (
+                <ContainaerCarregando>
+                <img src={carregando}  alt="carregando.."/>
                 <div>{erro}</div>
+                </ContainaerCarregando>
             )}
-            
+
         </>
     )
 
@@ -117,6 +121,7 @@ const ContainerHorarios = styled.div`
         color: #FFFFFF;
     }
 
+
 `
 
 const ContainerFooter = styled.div`
@@ -162,8 +167,15 @@ const ContainerMolduraFilme = styled.div`
         font-weight: 400;
     }
 `
-
-
+const ContainaerCarregando = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    img{
+        width:100px
+    }
+`
 
 
 
