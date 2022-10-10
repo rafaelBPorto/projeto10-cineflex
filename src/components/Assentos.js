@@ -12,8 +12,6 @@ export default function Assentos() {
     const [name, setName] = useState("")
     const [cpf, setCpf] = useState("")
 
-    const lugaresSelecionados = { id: [], name: "", cpf: "" }
-
     const { idSessao } = useParams()
     const URLsessao = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
 
@@ -40,7 +38,7 @@ export default function Assentos() {
                         })}
                     </ContainerAssentos>
                     
-                    <DadosCompra name={name} setName={setName} cpf={cpf} setCpf={setCpf} />
+                    <DadosCompra name={name} setName={setName} cpf={cpf} setCpf={setCpf} id={id}/>
 
                     <ContainerFooter>
                         <ContainerMolduraFilme>
