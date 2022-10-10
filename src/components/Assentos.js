@@ -27,16 +27,24 @@ export default function Assentos() {
                 <div>Carregando...</div>
             ) : (
                 <>
-                    <div>Filme: {sessao.movie.title}</div>
-                    <div>Dia: {sessao.day.weekday} - {sessao.day.date}</div>
-                    <div>Horário: {sessao.name}</div>
-                    <div>Assentos</div>
                     <ContainerAssentos>
-                        
+                        <ContainerTitulo>Selecione o(s) assento(s)</ContainerTitulo>
                         {sessao.seats.map((assento) => {
                             return <Lugar key={assento.id} assento={assento} lugaresSelecionados={lugaresSelecionados.id}/>
                         })}
                     </ContainerAssentos>
+                    <ContainerFooter>
+                        <ContainerMolduraFilme>
+                            <img src={sessao.movie.posterURL} alt={sessao.movie.title} />
+                        </ContainerMolduraFilme>
+                        <h1>{sessao.movie.title} 
+                            <span>
+                            <h1>{sessao.day.weekday} - {sessao.day.date}</h1>
+                            </span>
+                        </h1>
+                        
+                        
+                    </ContainerFooter>
                 </>
             )}
         </>
@@ -55,3 +63,54 @@ const ContainerAssentos = styled.div`
     box-sizing: border-box;
 
     `
+const ContainerTitulo = styled.div`
+width: 100%;
+height: 110px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-weight: 400;
+font-size: 24px;
+`
+const ContainerFooter = styled.div`
+    position: fixed; 
+    bottom: 0px;   
+    left: 0px;
+    width: 100%;
+    height: 117px;
+    padding: 14px;
+    
+
+    background: #DFE6ED;
+    display:flex;
+    align-items: center;
+
+
+
+    h1{
+        font-weight: 400;
+        margin-left: 16px;
+
+    }
+
+`
+const ContainerMolduraFilme = styled.div`
+    width: 64px;
+    height: 89px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        width: 48px;
+        height: 72px;
+    }
+
+    h1{
+        font-weight: 400;
+    }
+`

@@ -27,7 +27,6 @@ export default function Filme() {
 
     return (
         <>
-
             {sessoes !== null ? (
                 <>
                     <ContainerSessoes>
@@ -83,7 +82,6 @@ const ContainerSessoes = styled.div`
         font-size: 24px;    
     }   
 `
-
 const ContainerSessao = styled.div`
     display: flex;
     flex-direction: column;
@@ -96,7 +94,6 @@ const ContainerSessao = styled.div`
         margin-bottom: 30px;
     }
 `
-
 const ContainerHorarios = styled.div`
     display: flex;
     gap: 8px;
@@ -123,7 +120,6 @@ const ContainerHorarios = styled.div`
 
 
 `
-
 const ContainerFooter = styled.div`
     position: fixed; 
     bottom: 0px;   
@@ -146,7 +142,6 @@ const ContainerFooter = styled.div`
     }
 
 `
-
 const ContainerMolduraFilme = styled.div`
     width: 64px;
     height: 89px;
