@@ -7,8 +7,6 @@ import Lugar from "./Lugar"
 
 export default function Assentos() {
     const [sessao, setSessao] = useState(null)
-    const [plavraChutada, setPalavraChutada] = useState("")
-    const [palavrasTestadas, setPalavrasTestadas] = useState([]);
     const [id, setId] = useState([])
     const [name, setName] = useState("")
     const [cpf, setCpf] = useState("")
@@ -18,20 +16,6 @@ export default function Assentos() {
     const { idSessao } = useParams()
     const URLsessao = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
 
-    function monitoraInput(event){
-        setPalavraChutada(event.target.value)
-    }
-
-    function chutarPalavras() {
-        const novaLista = [...palavrasTestadas, plavraChutada]
-        setPalavrasTestadas(novaLista)
-        setPalavraChutada("")
-        console.log(novaLista)
-        lugaresSelecionados.name = plavraChutada
-        lugaresSelecionados.id=[id]
-        
-        console.log(lugaresSelecionados)
-    }
 
     useEffect(() => {
         const sessaoPromise = axios.get(URLsessao)
@@ -55,13 +39,6 @@ export default function Assentos() {
                         })}
                     </ContainerAssentos>
 
-                    <div>Nome do Comprador</div>
-                    <input type="text"
-                        placeholder="Digite seu nome"
-                        onChange={monitoraInput}
-                        value={plavraChutada}
-                    />
-                    <button onClick={chutarPalavras}>Chutar</button>
 
                     <ContainerFooter>
                         <ContainerMolduraFilme>
