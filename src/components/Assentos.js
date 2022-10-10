@@ -6,11 +6,11 @@ import DadosCompra from "./DadosCompra"
 import Lugar from "./Lugar"
 
 
-export default function Assentos() {
-    const [sessao, setSessao] = useState(null)
-    const [id, setId] = useState([])
-    const [name, setName] = useState("")
-    const [cpf, setCpf] = useState("")
+export default function Assentos({ sessao, setSessao, id, setId, name, setName, cpf, setCpf}) {
+    // const [sessao, setSessao] = useState(null)
+    // const [id, setId] = useState([])
+    // const [name, setName] = useState("")
+    // const [cpf, setCpf] = useState("")
 
     const { idSessao } = useParams()
     const URLsessao = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
@@ -34,11 +34,11 @@ export default function Assentos() {
                     <ContainerAssentos>
                         <ContainerTitulo>Selecione o(s) assento(s)</ContainerTitulo>
                         {sessao.seats.map((assento) => {
-                            return <Lugar key={assento.id} assento={assento} id={id} setId={setId}/>
+                            return <Lugar key={assento.id} assento={assento} id={id} setId={setId} />
                         })}
                     </ContainerAssentos>
-                    
-                    <DadosCompra name={name} setName={setName} cpf={cpf} setCpf={setCpf} id={id}/>
+
+                    <DadosCompra name={name} setName={setName} cpf={cpf} setCpf={setCpf} id={id} />
 
                     <ContainerFooter>
                         <ContainerMolduraFilme>

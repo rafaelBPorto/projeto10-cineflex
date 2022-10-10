@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import Sucesso from "./Sucesso"
 
 export default function DadosCompra({ name, setName, cpf, setCpf, id }) {
     console.log(name)
@@ -22,14 +23,15 @@ export default function DadosCompra({ name, setName, cpf, setCpf, id }) {
         enviarPedido.then(() => {
             console.log(obj)
             // mudar de página
-            navigate("/")
-            alert("Compra Realizada")
+            navigate("/sucesso")
+            
+            // alert("Compra Realizada")
         })
     }
 
 
     return (
-        <ContainerForm onSubmit={realizarCompra}>
+        <ContainerForm action='/sucesso' onSubmit={realizarCompra}>
             <div>
                 <div>
                     <label htmlFor="name">Nome do Comprador:</label>
