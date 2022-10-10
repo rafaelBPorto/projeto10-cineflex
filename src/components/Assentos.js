@@ -1,12 +1,12 @@
 import axios from "axios"
-import { useEffect} from "react"
+import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import DadosCompra from "./DadosCompra"
 import Lugar from "./Lugar"
 
 
-export default function Assentos({ sessao, setSessao, id, setId, name, setName, cpf, setCpf, numeroAssentos, setNumeroAssentos}) {
+export default function Assentos({ sessao, setSessao, id, setId, name, setName, cpf, setCpf, numeroAssentos, setNumeroAssentos }) {
 
     const { idSessao } = useParams()
     const URLsessao = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
@@ -33,6 +33,21 @@ export default function Assentos({ sessao, setSessao, id, setId, name, setName, 
                             return <Lugar key={assento.id} assento={assento} id={id} setId={setId} numeroAssentos={numeroAssentos} setNumeroAssentos={setNumeroAssentos} />
                         })}
                     </ContainerAssentos>
+
+                    <ContainerLegenda>
+                        <QuadroLegenda>
+                            <Legenda corInterna="#1AAE9E" corMoldura="#0E7D71" />
+                            <p>Selecionado</p>
+                        </QuadroLegenda>
+                        <QuadroLegenda>
+                            <Legenda corInterna="#C3CFD9" corMoldura="#7B8B99" />
+                            <p>Disponível</p>
+                        </QuadroLegenda>
+                        <QuadroLegenda>
+                            <Legenda corInterna="#FBE192" corMoldura="#F7C52B" />
+                            <p>Indisponível</p>
+                        </QuadroLegenda>
+                    </ContainerLegenda>
 
                     <DadosCompra name={name} setName={setName} cpf={cpf} setCpf={setCpf} id={id} />
 
@@ -114,4 +129,31 @@ const ContainerMolduraFilme = styled.div`
     h1{
         font-weight: 400;
     }
+`
+const ContainerLegenda = styled.div`
+    width:360px;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+    
+`
+const QuadroLegenda = styled.div`
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+`
+const Legenda = styled.div`
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    background: ${props => props.corInterna};
+    border: 1px solid ${props => props.corMoldura};
+    border-radius: 12px;
 `
