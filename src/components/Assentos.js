@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
+import DadosCompra from "./DadosCompra"
 import Lugar from "./Lugar"
 
 
@@ -27,7 +28,7 @@ export default function Assentos() {
     }, [URLsessao])
 
     return (
-        <>
+        <div>
             {sessao === null ? (
                 <div>Carregando...</div>
             ) : (
@@ -38,7 +39,8 @@ export default function Assentos() {
                             return <Lugar key={assento.id} assento={assento} id={id} setId={setId}/>
                         })}
                     </ContainerAssentos>
-
+                    
+                    <DadosCompra name={name} setName={setName} cpf={cpf} setCpf={setCpf} />
 
                     <ContainerFooter>
                         <ContainerMolduraFilme>
@@ -52,7 +54,7 @@ export default function Assentos() {
                     </ContainerFooter>
                 </>
             )}
-        </>
+        </div>
 
     )
 }
