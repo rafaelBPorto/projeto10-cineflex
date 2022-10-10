@@ -7,7 +7,7 @@ import Lugar from "./Lugar"
 
 export default function Assentos() {
     const [sessao, setSessao] = useState(null)
-
+    const lugaresSelecionados = {id: [], name:"", cpf:""}
 
     const { idSessao } = useParams()
     const URLsessao = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
@@ -32,8 +32,9 @@ export default function Assentos() {
                     <div>Horário: {sessao.name}</div>
                     <div>Assentos</div>
                     <ContainerAssentos>
+                        
                         {sessao.seats.map((assento) => {
-                            return <Lugar key={assento.id} assento={assento}/>
+                            return <Lugar key={assento.id} assento={assento} lugaresSelecionados={lugaresSelecionados.id}/>
                         })}
                     </ContainerAssentos>
                 </>

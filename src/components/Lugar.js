@@ -1,25 +1,33 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-export default function Lugar({ assento }) {
+export default function Lugar({ assento, lugaresSelecionados }) {
+
+    // console.log(assento)
 
     const [selecionado, setSelecionado] = useState(false)
     const [Interna, setInterna] = useState("#C3CFD9")
     const [Moldura, setMoldura] = useState("#7B8B99")
-
+    // const [cadeiras, setCadeiras] = useState([])
     function estadoAssento() {
 
         const novoEstado = !selecionado
         setSelecionado(novoEstado)
         if (novoEstado) {
             console.log("selecionou")
+            lugaresSelecionados.push(assento.id)
+            
             setInterna("#1AAE9E")
             setMoldura("#0E7D71")
         } else {
             console.log("desistiu")
+            const posicao = lugaresSelecionados.indexOf(assento.id)
+            lugaresSelecionados.splice(posicao, 1)
             setInterna("#C3CFD9")
             setMoldura("#7B8B99")      
         }
+
+        console.log(lugaresSelecionados)
 
     }
 
